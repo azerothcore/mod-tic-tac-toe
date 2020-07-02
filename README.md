@@ -1,3 +1,5 @@
+# ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
+
 # TicTacToe module for AzerothCore.
 
 This module allows to play the game Tic Tac Toe between players and against different AI.
