@@ -1,0 +1,32 @@
+[worldserver]
+
+####################
+#	TIC TAC TOE game #
+####################
+
+#
+#    Money Reward Win/Loose/Draw Human
+#        Description: Reset all cooldowns before duel starts and restore them when duel ends.
+#        Default:     100000  - (10 gold)
+
+MoneyWinHuman      = 100000
+MoneyLooseHuman    = 100000
+MoneyDrawHuman     = 100000
+
+#
+#    Money Reward Win/Loose/Draw Random IA
+#        Description: Reset all cooldowns before duel starts and restore them when duel ends.
+#        Default:     10000  - (1 gold)
+
+MoneyWinRandomIA   = 10000
+MoneyLooseRandomIA = 10000
+MoneyDrawRandomIA  = 10000
+
+#
+#    Money Reward Win/Loose/Draw IA (advanced)
+#        Description: Reset all cooldowns before duel starts and restore them when duel ends.
+#        Default:     100000  - (10 gold)
+
+MoneyWinIA         = 100000
+MoneyLooseIA       = 100000
+MoneyDrawIA        = 100000
