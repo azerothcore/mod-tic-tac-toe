@@ -113,15 +113,15 @@ enum GossipMenuTicTacToe
 };
 
 // Money Reward TicTacToe
-const uint64 MONEY_WIN_GAME_HUMAN    = sConfigMgr->GetOption<bool>("MoneyWinHuman",      1000000);
-const uint64 MONEY_LOOSE_GAME_HUMAN  = sConfigMgr->GetOption<bool>("MoneyLooseHuman",    1000000);
-const uint64 MONEY_DRAW_GAME_HUMAN   = sConfigMgr->GetOption<bool>("MoneyDrawHuman",     10000);
-const uint64 MONEY_WIN_GAME_NPC      = sConfigMgr->GetOption<bool>("MoneyWinRandomIA",   10000);
-const uint64 MONEY_LOOSE_GAME_NPC    = sConfigMgr->GetOption<bool>("MoneyLooseRandomIA", 10000);
-const uint64 MONEY_DRAW_GAME_NPC     = sConfigMgr->GetOption<bool>("MoneyDrawRandomIA",  10000);
-const uint64 MONEY_WIN_GAME_IA_NPC   = sConfigMgr->GetOption<bool>("MoneyWinIA",         100000);
-const uint64 MONEY_LOOSE_GAME_IA_NPC = sConfigMgr->GetOption<bool>("MoneyLooseIA",       100000);
-const uint64 MONEY_DRAW_GAME_IA_NPC  = sConfigMgr->GetOption<bool>("MoneyDrawIA",        100000);
+uint64 MONEY_WIN_GAME_HUMAN;
+uint64 MONEY_LOOSE_GAME_HUMAN;
+uint64 MONEY_DRAW_GAME_HUMAN;
+uint64 MONEY_WIN_GAME_NPC;
+uint64 MONEY_LOOSE_GAME_NPC;
+uint64 MONEY_DRAW_GAME_NPC;
+uint64 MONEY_WIN_GAME_IA_NPC;
+uint64 MONEY_LOOSE_GAME_IA_NPC;
+uint64 MONEY_DRAW_GAME_IA_NPC;
 
 class npc_tic_tac_toe : public CreatureScript
 {
@@ -1689,6 +1689,19 @@ class TicTacToeWorld : public WorldScript
 {
   public:
     TicTacToeWorld() : WorldScript("TicTacToeWorld") {}
+
+    void OnBeforeConfigLoad(bool /*reload*/) override
+    {
+        MONEY_WIN_GAME_HUMAN    = sConfigMgr->GetOption<uint64>("MoneyWinHuman",      100000);
+        MONEY_LOOSE_GAME_HUMAN  = sConfigMgr->GetOption<uint64>("MoneyLooseHuman",    100000);
+        MONEY_DRAW_GAME_HUMAN   = sConfigMgr->GetOption<uint64>("MoneyDrawHuman",     10000);
+        MONEY_WIN_GAME_NPC      = sConfigMgr->GetOption<uint64>("MoneyWinRandomIA",   10000);
+        MONEY_LOOSE_GAME_NPC    = sConfigMgr->GetOption<uint64>("MoneyLooseRandomIA", 10000);
+        MONEY_DRAW_GAME_NPC     = sConfigMgr->GetOption<uint64>("MoneyDrawRandomIA",  10000);
+        MONEY_WIN_GAME_IA_NPC   = sConfigMgr->GetOption<uint64>("MoneyWinIA",         100000);
+        MONEY_LOOSE_GAME_IA_NPC = sConfigMgr->GetOption<uint64>("MoneyLooseIA",       100000);
+        MONEY_DRAW_GAME_IA_NPC  = sConfigMgr->GetOption<uint64>("MoneyDrawIA",        100000);
+    }
 };
 
 void AddTicTacToeScripts()
