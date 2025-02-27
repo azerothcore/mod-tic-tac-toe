@@ -12,7 +12,7 @@
 #include "Group.h"
 #include "GossipDef.h"
 #include "ScriptedGossip.h"
-#include "UnitAI"
+#include "UnitAI.h"
 #include "Util.h"
 #include "ScriptedCreature.h"
 
