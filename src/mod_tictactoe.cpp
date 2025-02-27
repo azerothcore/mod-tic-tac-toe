@@ -642,7 +642,7 @@ public:
                     playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer02);
                     if (playerFind02)
                     {
-                        playerFind02->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage.c_str());
                         ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
                     }
                 }
@@ -651,7 +651,7 @@ public:
                     playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer01);
                     if (playerFind02)
                     {
-                        playerFind02->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage.c_str());
                         ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
                     }
                 }
@@ -678,7 +678,7 @@ public:
             notificationMessage += "' will start this new game in first.";
 
             // Send notification about roll result
-            player->GetSession()->SendNotification("%s", notificationMessage.c_str());
+            ChatHandler(player->GetSession()).SendNotification("%s", notificationMessage.c_str());
             ChatHandler(player->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
 
             // If player game send notification to second player
@@ -690,7 +690,7 @@ public:
                     playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer02);
                     if (playerFind02)
                     {
-                        playerFind02->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage.c_str());
                         ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
                     }
                 }
@@ -699,7 +699,7 @@ public:
                     playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer01);
                     if (playerFind02)
                     {
-                        playerFind02->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage.c_str());
                         ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
                     }
                 }
@@ -776,19 +776,19 @@ public:
                     if (action == (GOSSIP_ACTION_INFO_DEF + 63))
                     {
                         notificationMessage = "\n\nYou need click on : Select cell for use your " + GetIconePathBySize(GetIconeNameByPlayerTheme(Path_Icon, NpcTicTacToeGameExist->nextIdPlayerMove, NpcTicTacToeGameExist->themeTypeSelected), 45) + ".";
-                        player->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(player->GetSession()).SendNotification("%s", notificationMessage.c_str());
                     }
 
                     // Send notification and gossip details for wrong cell
                     if (action == (GOSSIP_ACTION_INFO_DEF + 67))
                     {
-                        player->GetSession()->SendNotification("%s", "\nWrong cell number, you need use (A1,A2,A3,B1,B2,B3,C1,C2,C3).");
+                        ChatHandler(player->GetSession()).SendNotification("%s", "\nWrong cell number, you need use (A1,A2,A3,B1,B2,B3,C1,C2,C3).");
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "\nWrong cell number, you need use (A1,A2,A3,B1,B2,B3,C1,C2,C3).", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 63);
 
                     }
                     else if (action == (GOSSIP_ACTION_INFO_DEF + 68))
                     {
-                        player->GetSession()->SendNotification("%s", "\nWrong cell number, this cell is already played.");
+                        ChatHandler(player->GetSession()).SendNotification("%s", "\nWrong cell number, this cell is already played.");
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "\nWrong cell number, this cell is already played.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 63);
 
                     }
@@ -1153,7 +1153,7 @@ public:
                 notificationMessage01 += "by '|" + notificationColor + player->GetName() + "|r'.";
                 notificationMessage02 += "by '|" + notificationColor + player->GetName() + "|r'.";
 
-                player->GetSession()->SendNotification("%s", notificationMessage01.c_str());
+                ChatHandler(player->GetSession()).SendNotification("%s", notificationMessage01.c_str());
                 ChatHandler(player->GetSession()).PSendSysMessage("%s", notificationMessage02.c_str());
 
                 Player* playerFind02 = nullptr;
@@ -1167,7 +1167,7 @@ public:
                         playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer02);
                         if (playerFind02)
                         {
-                            playerFind02->GetSession()->SendNotification("%s", notificationMessage01.c_str());
+                            ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage01.c_str());
                             ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage02.c_str());
                         }
                     }
@@ -1176,7 +1176,7 @@ public:
                         playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer01);
                         if (playerFind02)
                         {
-                            playerFind02->GetSession()->SendNotification("%s", notificationMessage01.c_str());
+                            ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage01.c_str());
                             ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage02.c_str());
                         }
                     }
@@ -1344,7 +1344,7 @@ public:
                                     else
                                     {
                                         std::string notificationMessage = "Your mate '" + member->GetName() + "' it's already in one game.";
-                                        player->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                                        ChatHandler(player->GetSession()).SendNotification("%s", notificationMessage.c_str());
                                     }
                                 }
                             }
@@ -1363,7 +1363,7 @@ public:
                     }
                     else
                     {
-                        player->GetSession()->SendNotification("%s", "You need to be in a group (only with one mate).");
+                        ChatHandler(player->GetSession()).SendNotification("%s", "You need to be in a group (only with one mate).");
                         CloseGossipMenuFor(player);
                         return true;
                     }
@@ -1396,7 +1396,7 @@ public:
                             else
                             {
                                 std::string notificationMessage = "Your target '" + targetPlayer->GetName() + "' it's already in one game.";
-                                player->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                                ChatHandler(player->GetSession()).SendNotification("%s", notificationMessage.c_str());
                             }
                         }
 
@@ -1413,7 +1413,7 @@ public:
                     }
                     else
                     {
-                        player->GetSession()->SendNotification("%s", "You need to select a player.");
+                        ChatHandler(player->GetSession()).SendNotification("%s", "You need to select a player.");
                         CloseGossipMenuFor(player);
                         return true;
                     }
@@ -1467,7 +1467,7 @@ public:
                     Player* playerFind02 = ObjectAccessor::FindConnectedPlayer(NpcTicTacToeGameExist->guidPlayer02);
                     if (playerFind02)
                     {
-                        playerFind02->GetSession()->SendNotification("%s", notificationMessage.c_str());
+                        ChatHandler(playerFind02->GetSession()).SendNotification("%s", notificationMessage.c_str());
                         ChatHandler(playerFind02->GetSession()).PSendSysMessage("%s", notificationMessage.c_str());
 
                         OnGossipSelect(playerFind02, creature, GOSSIP_SENDER_MAIN, (GOSSIP_ACTION_INFO_DEF + 56));
