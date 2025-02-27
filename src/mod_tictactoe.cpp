@@ -241,9 +241,7 @@ public:
                                 {
                                     Player* playerFind01 = ObjectAccessor::FindConnectedPlayer(i->second.guidPlayer01);
                                     if (playerFind01)
-                                    {
                                         me->Whisper("Let's me think about my move.", LANG_UNIVERSAL, playerFind01, true);
-                                    }
 
                                     NpcTicTacToeData[i->second.guidPlayer01].computerStateText = 2;
                                 }
@@ -262,9 +260,7 @@ public:
                                 {
                                     Player* playerFind01 = ObjectAccessor::FindConnectedPlayer(i->second.guidPlayer01);
                                     if (playerFind01)
-                                    {
                                         // me->Whisper("Let's see what i can play now.", LANG_UNIVERSAL, playerFind01, true);
-                                    }
 
                                     NpcTicTacToeData[i->second.guidPlayer01].computerStateText = 3;
                                 }
@@ -307,7 +303,8 @@ public:
         bool gameDraw = true;
 
         // Check if winner
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++)
+        {
             if ((NpcTicTacToeGameExist->gameGrid[i][0] != 0 && NpcTicTacToeGameExist->gameGrid[i][0] == NpcTicTacToeGameExist->gameGrid[i][1] && NpcTicTacToeGameExist->gameGrid[i][1] == NpcTicTacToeGameExist->gameGrid[i][2]) ||
                 (NpcTicTacToeGameExist->gameGrid[0][i] != 0 && NpcTicTacToeGameExist->gameGrid[0][i] == NpcTicTacToeGameExist->gameGrid[1][i] && NpcTicTacToeGameExist->gameGrid[1][i] == NpcTicTacToeGameExist->gameGrid[2][i]) ||
                 (NpcTicTacToeGameExist->gameGrid[0][0] != 0 && NpcTicTacToeGameExist->gameGrid[0][0] == NpcTicTacToeGameExist->gameGrid[1][1] && NpcTicTacToeGameExist->gameGrid[1][1] == NpcTicTacToeGameExist->gameGrid[2][2]) ||
@@ -318,12 +315,12 @@ public:
         }
 
         // Check if game draw ?
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
                 if (NpcTicTacToeGameExist->gameGrid[i][j] != 1 && NpcTicTacToeGameExist->gameGrid[i][j] != 2)
-                {
                     gameDraw = false;
-                }
             }
         }
 
@@ -357,7 +354,8 @@ public:
                 (NpcTicTacToeGameExist->AIgameGrid[0][0] == NpcTicTacToeGameExist->AIgameGrid[1][0] && NpcTicTacToeGameExist->AIgameGrid[0][0] == NpcTicTacToeGameExist->AIgameGrid[2][0]) ||
                 (NpcTicTacToeGameExist->AIgameGrid[0][0] == NpcTicTacToeGameExist->AIgameGrid[1][1] && NpcTicTacToeGameExist->AIgameGrid[0][0] == NpcTicTacToeGameExist->AIgameGrid[2][2])
             )
-        ) {
+        )
+        {
             return NpcTicTacToeGameExist->AIgameGrid[0][0];
         }
 
@@ -368,7 +366,8 @@ public:
                 (NpcTicTacToeGameExist->AIgameGrid[1][1] == NpcTicTacToeGameExist->AIgameGrid[0][1] && NpcTicTacToeGameExist->AIgameGrid[1][1] == NpcTicTacToeGameExist->AIgameGrid[2][1]) ||
                 (NpcTicTacToeGameExist->AIgameGrid[1][1] == NpcTicTacToeGameExist->AIgameGrid[2][0] && NpcTicTacToeGameExist->AIgameGrid[1][1] == NpcTicTacToeGameExist->AIgameGrid[0][2])
             )
-        ) {
+        )
+        {
             return NpcTicTacToeGameExist->AIgameGrid[1][1];
         }
 
@@ -378,7 +377,8 @@ public:
                 (NpcTicTacToeGameExist->AIgameGrid[2][2] == NpcTicTacToeGameExist->AIgameGrid[0][2] && NpcTicTacToeGameExist->AIgameGrid[2][2] == NpcTicTacToeGameExist->AIgameGrid[1][2]) ||
                 (NpcTicTacToeGameExist->AIgameGrid[2][2] == NpcTicTacToeGameExist->AIgameGrid[2][0] && NpcTicTacToeGameExist->AIgameGrid[2][2] == NpcTicTacToeGameExist->AIgameGrid[2][1])
             )
-        ) {
+        )
+        {
             return NpcTicTacToeGameExist->AIgameGrid[2][2];
         }
 
@@ -392,13 +392,17 @@ public:
         int best_move_col = -9999;
         int score_for_this_move = 0;
 
-        for (int r = 0; r < 3; r++) {
-            for (int c = 0; c < 3; c++) {
-                if (NpcTicTacToeGameExist->AIgameGrid[r][c] == 0) {
+        for (int r = 0; r < 3; r++)
+        {
+            for (int c = 0; c < 3; c++)
+            {
+                if (NpcTicTacToeGameExist->AIgameGrid[r][c] == 0)
+                {
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].AIgameGrid[r][c] = player1; //Try test move.
                     score_for_this_move = -(AInegamax(NpcTicTacToeGameExist, player2, player1));
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].AIgameGrid[r][c] = 0; //Put back test move.
-                    if (score_for_this_move >= best_move_score) {
+                    if (score_for_this_move >= best_move_score)
+                    {
                         best_move_score = score_for_this_move;
                         best_move_row = r;
                         best_move_col = c;
@@ -423,15 +427,17 @@ public:
         else if (AIcheck_win(NpcTicTacToeGameExist) == player2)
             return -1000;
 
-        for (int r = 0; r < 3; r++) {
-            for (int c = 0; c < 3; c++) {
-                if (NpcTicTacToeGameExist->AIgameGrid[r][c] == 0) {
+        for (int r = 0; r < 3; r++)
+        {
+            for (int c = 0; c < 3; c++)
+            {
+                if (NpcTicTacToeGameExist->AIgameGrid[r][c] == 0)
+                {
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].AIgameGrid[r][c] = player1; //Try test move.
                     score_for_this_move = -(AInegamax(NpcTicTacToeGameExist, player2, player1));
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].AIgameGrid[r][c] = 0; //Put back test move.
-                    if (score_for_this_move >= best_move_score) {
+                    if (score_for_this_move >= best_move_score)
                         best_move_score = score_for_this_move;
-                    }
                 }
             }
         }
@@ -473,9 +479,7 @@ public:
                     {
                         NpcTicTacToeGameExist = GetNpcTitcTacToeData(i->second.guidPlayer01);
                         if (NpcTicTacToeGameExist)
-                        {
                             gameExistFound = true;
-                        }
                         break;
                     }
                 }
@@ -499,8 +503,10 @@ public:
         if (NpcTicTacToeGameExist->gameTypeSelected == 3)
         {
             // Copy information in board AI
-            for (int i = 0; i < 3; i++){
-                for (int j = 0; j < 3; j++){
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
                     if (NpcTicTacToeGameExist->gameGrid[i][j] == 1)
                     {
                         // board[i][j] = '1';
@@ -529,12 +535,12 @@ public:
             listStringCellEmpty.clear();
 
             // Find cell empty
-            for (int i = 0; i < 3; i++){
-                for (int j = 0; j < 3; j++){
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
                     if (NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].gameGrid[i][j] == 0)
-                    {
                         listStringCellEmpty.push_back(std::to_string(i) + std::to_string(j));
-                    }
                 }
             }
 
@@ -611,9 +617,7 @@ public:
                     {
                         NpcTicTacToeGameExist = GetNpcTitcTacToeData(i->second.guidPlayer01);
                         if (NpcTicTacToeGameExist)
-                        {
                             gameExistFound = true;
-                        }
                         break;
                     }
                 }
@@ -744,9 +748,11 @@ public:
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "          1                 2                 3", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 63);
 
         std::string path_icon_string_display = "";
-        for (int i(0); i < 3; i++){
+        for (int i(0); i < 3; i++)
+        {
             path_icon_string_display = " ";
-            for (int j(0); j < 3; j++){
+            for (int j(0); j < 3; j++)
+            {
                 path_icon_string_display += " " + npc_tic_tac_toe::GetIconePathBySize(npc_tic_tac_toe::GetIconeNameByPlayerTheme(Path_Icon, NpcTicTacToeGameExist->gameGrid[i][j], NpcTicTacToeGameExist->themeTypeSelected), 75);
             }
             AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, path_icon_string_display, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 63);
@@ -800,13 +806,9 @@ public:
                 else
                 {
                     if (NpcTicTacToeGameExist->nextIdPlayerMove == 1)
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "\nFirst player '" + COLOR_RED + "" + NpcTicTacToeGameExist->namePlayer01 + "|r' playing |TInterface\\icons\\Spell_Holy_Borrowedtime:45|t.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                    }
                     else
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "\nSecond player '" + COLOR_BLUE + "" + NpcTicTacToeGameExist->namePlayer02 + "|r' playing |TInterface\\icons\\Spell_Holy_Borrowedtime:45|t.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                    }
                 }
             }
         }
@@ -817,13 +819,9 @@ public:
             {
                 // Gossip win message
                 if (NpcTicTacToeGameExist->nextIdPlayerMove == 2)
-                {
                     AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "\nGame win by the first player '" + COLOR_RED + "" + NpcTicTacToeGameExist->namePlayer01 + "|r'.\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                }
                 else
-                {
                     AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "\nGame win by the second player '" + COLOR_BLUE + "" + NpcTicTacToeGameExist->namePlayer02 + "|r'.\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                }
 
                 AddGossipItemFor(player, GOSSIP_ICON_TABARD, "Erase this game ?\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
 
@@ -1063,29 +1061,17 @@ public:
 
                     // If theme already selected (only the player who start build the game can continue)
                     if (i->second.gameStatus == 1 && i->second.guidPlayer01 == player->GetGUID())
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "You are already in one game setup.\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 20);
-                    }
                     else if (i->second.gameStatus == 2 && i->second.guidPlayer01 == player->GetGUID())
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "You are already in one game created.\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 56);
-                    }
                     else if (i->second.gameStatus < 2 && i->second.guidPlayer02 == player->GetGUID() && i->second.gameTypeSelected == 1)
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TALK, "You are already in one game setup (create by '" + COLOR_RED + "" + i->second.namePlayer01 + "|r').\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-                    }
                     else if (i->second.gameStatus == 2 && i->second.guidPlayer02 == player->GetGUID() && i->second.gameTypeSelected == 1)
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "You are already in one game created by '" + COLOR_RED + "" + i->second.namePlayer01 + "|r', join it ?\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 56);
-                    }
                     else if (i->second.gameStatus >= 5 && i->second.gameStatus < 20)
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_TABARD, "You are already in an existing game '" + COLOR_RED + "" + i->second.namePlayer01 + "|r' Vs '" + COLOR_BLUE + "" + i->second.namePlayer02 + "|r', join it ?\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                    }
                     else if (i->second.gameStatus >= 20)
-                    {
                         AddGossipItemFor(player, GOSSIP_ICON_VENDOR, "This game '" + COLOR_RED + "" + i->second.namePlayer01 + "|r' Vs '" + COLOR_BLUE + "" + i->second.namePlayer02 + "|r' it's already done.\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
-                    }
 
                     AddGossipItemFor(player, GOSSIP_ICON_TABARD, "Erase your existing game ?\n", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
                     break;
@@ -1128,9 +1114,7 @@ public:
                 {
                     NpcTicTacToeGameExist = GetNpcTitcTacToeData(i->second.guidPlayer01);
                     if (NpcTicTacToeGameExist)
-                    {
                         gameExistFound = true;
-                    }
                     break;
                 }
             }
@@ -1356,9 +1340,7 @@ public:
                                         for (std::map<ObjectGuid, NpcTicTacToeInfo>::const_iterator i = NpcTicTacToeData.begin(); i != NpcTicTacToeData.end(); ++i)
                                         {
                                             if (i->second.guidPlayer01 == member->GetGUID() || i->second.guidPlayer02 == member->GetGUID())
-                                            {
                                                 gameExistFound = true;
-                                            }
                                         }
                                     }
 
@@ -1410,9 +1392,7 @@ public:
                                 for (std::map<ObjectGuid, NpcTicTacToeInfo>::const_iterator i = NpcTicTacToeData.begin(); i != NpcTicTacToeData.end(); ++i)
                                 {
                                     if (i->second.guidPlayer01 == targetPlayer->GetGUID() || i->second.guidPlayer02 == targetPlayer->GetGUID())
-                                    {
                                         gameExistFound = true;
-                                    }
                                 }
                             }
 
@@ -1476,8 +1456,10 @@ public:
                 NpcTicTacToeData[guidPlayer01].needRefreshGossipP2 = false;
 
                 // Init game grid default falue
-                for (int i(0); i < 3; i++){
-                    for (int j(0); j < 3; j++){
+                for (int i(0); i < 3; i++)
+                {
+                    for (int j(0); j < 3; j++)
+                    {
                         NpcTicTacToeData[guidPlayer01].gameGrid[i][j] = 0;
                     }
                 }
@@ -1579,9 +1561,7 @@ public:
                 {
                     NpcTicTacToeGameExist = GetNpcTitcTacToeData(i->second.guidPlayer01);
                     if (NpcTicTacToeGameExist)
-                    {
                         gameExistFound = true;
-                    }
                     break;
                 }
             }
@@ -1688,7 +1668,9 @@ public:
 class TicTacToeWorld : public WorldScript
 {
   public:
-    TicTacToeWorld() : WorldScript("TicTacToeWorld") {}
+    TicTacToeWorld() : WorldScript("TicTacToeWorld", {
+        WORLDHOOK_ON_BEFORE_CONFIG_LOAD
+    }) {}
 
     void OnBeforeConfigLoad(bool /*reload*/) override
     {
