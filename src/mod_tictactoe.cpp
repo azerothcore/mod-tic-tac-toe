@@ -12,17 +12,9 @@
 #include "Group.h"
 #include "GossipDef.h"
 #include "ScriptedGossip.h"
+#include "UnitAI"
 #include "Util.h"
 #include "ScriptedCreature.h"
-
-#define ENSURE_AI(a,b)  (EnsureAI<a>(b))
-template<class T, class U>
-T* EnsureAI(U* ai)
-{
-    T* cast_ai = dynamic_cast<T*>(ai);
-    ASSERT(cast_ai);
-    return cast_ai;
-};
 
 std::vector<std::string> Path_IconSelectGameType =
 {
