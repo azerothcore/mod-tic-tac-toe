@@ -569,7 +569,7 @@ public:
             // Refresh only gossip for player01
             NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP1 = true;
 
-            ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_04, 500);
+            ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_04, 500ms);
             return true;
         }
         else
