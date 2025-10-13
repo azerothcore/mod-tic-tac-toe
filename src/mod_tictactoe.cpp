@@ -726,12 +726,12 @@ public:
                 if (player->GetGUID() != NpcTicTacToeGameExist->guidPlayer02)
                 {
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP2 = true;
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500ms);
                 }
                 else
                 {
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP1 = true;
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500ms);
                 }
             }
         }
@@ -759,9 +759,9 @@ public:
                 if (action == (GOSSIP_ACTION_INFO_DEF + 76))
                 {
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].computerStateText = 1;
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_01, 1000);
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_02, 3000);
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_03, 5000);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_01, 1000ms);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_02, 3000ms);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_COMPUTER_PLAYER_TEXT_03, 5000ms);
                 }
 
                 AddGossipItemFor(player, GOSSIP_ICON_TABARD, "\nSecond player '" + COLOR_BLUE + "" + NpcTicTacToeGameExist->namePlayer02 + "|r' playing |TInterface\\icons\\Spell_Holy_Borrowedtime:45|t.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 60);
@@ -938,11 +938,11 @@ public:
                     if (NpcTicTacToeGameExist->gameTypeSelected == 1)
                     {
                         NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP2 = true;
-                        ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500);
+                        ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500ms);
                     }
 
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP1 = true;
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500ms);
                 }
             }
             else
@@ -1016,11 +1016,11 @@ public:
                     if (NpcTicTacToeGameExist->gameTypeSelected == 1)
                     {
                         NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP2 = true;
-                        ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500);
+                        ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500ms);
                     }
 
                     NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP1 = true;
-                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500);
+                    ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500ms);
                 }
             }
         }
@@ -1594,7 +1594,7 @@ public:
                             if (NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].gameTypeSelected == 1)
                             {
                                 NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP2 = true;
-                                ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500);
+                                ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_02, 500ms);
 
                                 // Main game check
                                 OnGossipSelect(player, creature, sender, (GOSSIP_ACTION_INFO_DEF + 60));
@@ -1616,7 +1616,7 @@ public:
                             if (NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].gameTypeSelected == 1)
                             {
                                 NpcTicTacToeData[NpcTicTacToeGameExist->guidPlayer01].needRefreshGossipP1 = true;
-                                ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500);
+                                ENSURE_AI(npc_tic_tac_toe::npc_tic_tac_toeAI, creature->AI())->_events.ScheduleEvent(WAIT_HUMAN_PLAYER_01, 500ms);
                             }
 
                             // Main game check
